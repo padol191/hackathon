@@ -12,6 +12,7 @@ session_start();
     <div>
         Welcome <?php echo $_SESSION["name"]; ?>! Click to <a href="logout.php">Logout</a>.
     </div>
+    <?php include 'index1.php';?>
 
     <div></div>
 </div>
