@@ -1,0 +1,18 @@
+﻿company_id,company,name,claim_ratio,coverage,premium
+1,tata,AIA,0.72,65,31000
+2,tata,ARYA,0.77,65,32000
+3,tata,jeevan,0.8,67,37000
+4,max,life,0.75,65,34000
+5,max,bupa,0.7,60,30000
+6,icici,lombard,0.78,65,36000
+7,icici,atoz,0.69,65,31000
+8,sbi ,general,0.67,70,32000
+9,bajaj,alliance,0.81,70,38000
+10,reliance,religare,0.77,70,37000
+11,reliance,health,0.77,70,33000
+12,future,general,0.71,65,33000
+13,indiafirst,sehat,0.66,60,28000
+14,tata,ABC,0.8,60,36000
+15,max,insura,0.7,65,30000
+16,sbi ,rinrak,0.75,65,37000
+17,icici,jk,0.77,65,39000
