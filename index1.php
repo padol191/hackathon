@@ -44,7 +44,33 @@ switch($_GET["action"]) {
 ?>
 <HTML>
 <HEAD>
-<TITLE>Simple PHP Shopping Cart</TITLE>
+	<style type="text/css">
+	.btn-payrexx {
+		display: inline-block;
+		width: 60px;
+		height: 20px;
+		padding: 6px 20px 6px 20px;
+		font-size: 23px;
+		font-weight: 300;
+		white-space: inherit;
+		background-color: #99cc33;
+		border: 0;
+		outline: 0;
+		text-decoration: none;
+		color: #ffffff;
+		border-radius: 3px;
+		-webkit-transition: background-color 300ms ease-out;
+		-moz-transition: background-color 300ms ease-out;
+		-o-transition: background-color 300ms ease-out;
+		transition: background-color 300ms ease-out;
+	}
+	.btn-payrexx:focus, .btn-payrexx:hover {
+		background-color: #19b8f2;
+		color: #ffffff;
+	}
+	</style>
+
+<TITLE>Cart</TITLE>
 <link href="style.css" type="text/css" rel="stylesheet" />
 </HEAD>
 <BODY>
@@ -75,8 +101,8 @@ if(isset($_SESSION["cart_item"])){
 				<td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
 				<td><?php echo $item["code"]; ?></td>
 				<td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-				<td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
-				<td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
+				<td  style="text-align:right;"><?php echo " ".$item["price"]; ?></td>
+				<td  style="text-align:right;"><?php echo " ". number_format($item_price,2); ?></td>
 				<td style="text-align:center;"><a href="index1.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
 				</tr>
 				<?php
@@ -88,7 +114,7 @@ if(isset($_SESSION["cart_item"])){
 <tr>
 <td colspan="2" align="right">Total:</td>
 <td align="right"><?php echo $total_quantity; ?></td>
-<td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+<td align="right" colspan="2"><strong><?php echo " ".number_format($total_price, 2); ?></strong></td>
 <td></td>
 </tr>
 </tbody>
@@ -101,9 +127,14 @@ if(isset($_SESSION["cart_item"])){
 }
 ?>
 </div>
+<link rel="stylesheet" type="text/css" href="styles.css">
+
 
 <div id="product-grid">
-	<div class="txt-heading">Products</div>
+	<div class="txt-heading">Products
+		<a class="btn-payrexx btn-payrexx-modal" href="https://insurance.payrexx.com/pay?tid=0ea7d635"target="_blank">
+		Pay	</a></div>
+		<a href="http://localhost:8888/notebooks/Untitled10.ipynb">check insurance</a>
 	<?php
 	$product_array = $db_handle->runQuery("SELECT * FROM tblproduct ORDER BY id ASC");
 	if (!empty($product_array)) {
@@ -114,15 +145,20 @@ if(isset($_SESSION["cart_item"])){
 			<div class="product-image"><img src="<?php echo $product_array[$key]["image"]; ?>"></div>
 			<div class="product-tile-footer">
 			<div class="product-title"><?php echo $product_array[$key]["name"]; ?></div>
-			<div class="product-price"><?php echo "$".$product_array[$key]["price"]; ?></div>
+			<div class="product-price"><?php echo "".$product_array[$key]["price"]; ?></div>
 			<div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
 			</div>
 			</form>
 		</div>
 
 
-		    <link rel="stylesheet" type="text/css" href="styles.css">
 
+
+				<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+				<script type="text/javascript" src="https://media.payrexx.com/modal/v1/modal.min.js"></script>
+				<script type="text/javascript">
+				    jQuery(".btn-payrexx-modal").payrexxModal();
+				</script>
 
 
 	<?php
